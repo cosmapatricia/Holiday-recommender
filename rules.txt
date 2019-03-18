@@ -1,0 +1,5 @@
+Venetia, Paris, Grecia
+IF italian food AND carnival THEN Venetia
+IF croissant AND romantism AND capital THEN Paris
+IF soare AND mare AND nisip THEN litoral
+IF litoral AND souvlaki THEN Grecia
