@@ -1,14 +1,18 @@
 from parser import *
 
-user_premises = ['italian food', 'carnival', 'soare', 'mare', 'nisip', 'souvlaki']
+user_premises = ['sea', 'sunbathe', 'greek food', 'Europe', 'diving', 'island']
 user_partial_conclusions = []
 
-parse('C:\\Users\\Patricia\\rules.txt')
+parse('C:\\Users\\Melissa\\Desktop\\SE\\rules.txt')
 
 print('\nInference data: ')
+print('\nRules: ')
 print(rules)
+print('\nPremises: ')
 print(premises)
+print('\nPartial conclusions: ')
 print(partial_conclusions)
+print('\nFinal conclusions: ')
 print(final_conclusions)
 print('\n')
 
