@@ -1,0 +1,41 @@
+{% load static %}
+<head>
+	<style>
+		input[type=submit]{
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<link rel="stylesheet" type="text/css" href="{% static 'expertsystem/style.css' %}">
+
+<div align="center">
+	<br>
+	<h1>Find your dream holiday destination!</h1>
+	<br>
+</div>
+
+<div align="left">
+	<h2><span class="tab">Your results are:</span></h2>
+</div>
+
+{% if final_results %}
+    <span class="extratab">
+    {% for result in final_results %}
+        <li>{{ result }}</li>
+		<br>
+    {% endfor %}
+    <form action="{% url 'expertsystem:index' %}" method="post">
+	{% csrf_token %}
+		<input type="submit" value="Retake quiz">
+	</form>
+    </span>
+{% endif %}

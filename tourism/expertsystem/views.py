@@ -114,4 +114,6 @@ def results(request):
 			user_premises.append(choice)
 	#response = "You're looking at the results."
 	#return HttpResponse(user_premises)
-	return HttpResponse(get_recommendations())
+	get_recommendations()
+	#return HttpResponse(final_results) #daca pun aici apelul la get_recommandations se apeleaza de mai multe ori aiurea no idea why
+	return render(request, 'expertsystem/results.html', {'final_results': final_results})

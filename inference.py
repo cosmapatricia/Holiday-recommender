@@ -1,6 +1,6 @@
 from parser import *
 
-user_premises = ['sea', 'sunbathe', 'greek food', 'Europe', 'diving', 'island']
+user_premises = ['Europe', 'sea', 'relaxing', 'sightseeing', 'quiet', 'sunbathe', 'shop at designer boutiques', ' shop at bazaars', 'diving', 'visit historical places', 'italian food', 'greek food', 'capital', 'exotic', 'island', 'high-end']
 user_partial_conclusions = []
 
 #parse('C:\\Users\\Melissa\\Desktop\\SE\\rules.txt')
