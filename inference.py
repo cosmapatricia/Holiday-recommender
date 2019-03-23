@@ -3,8 +3,8 @@ from parser import *
 user_premises = ['Europe', 'sea', 'relaxing', 'sightseeing', 'quiet', 'sunbathe', 'shop at designer boutiques', ' shop at bazaars', 'diving', 'visit historical places', 'italian food', 'greek food', 'capital', 'exotic', 'island', 'high-end']
 user_partial_conclusions = []
 
-#parse('C:\\Users\\Melissa\\Desktop\\SE\\rules.txt')
-parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt') 
+#parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt') 
+parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
 
 print('\nInference data: ')
 print('\nRules: ')
@@ -40,6 +40,8 @@ results = []
 for conclusion in final_conclusions:
 	results.append(inference(conclusion))
 
+results = list(set(results))
+	
 no_result = True
 for result in results:
 	if result != 0:

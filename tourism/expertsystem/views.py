@@ -16,6 +16,7 @@ user_premises = []
 user_partial_conclusions = []
 
 user_results = []
+user_results2 = []
 final_results = []
 
 def parse(path):
@@ -64,8 +65,9 @@ def inference(conclusion):
 def get_recommendations():
 	for conclusion in final_conclusions:
 		user_results.append(inference(conclusion))
+	user_results2 = list(set(user_results))
 	no_result = True
-	for result in user_results:
+	for result in user_results2:
 		if result != 0:
 			final_results.append(result)
 			no_result = False
@@ -84,8 +86,10 @@ def index(request):
 	user_premises.clear()
 	user_partial_conclusions.clear()
 	user_results.clear()
+	user_results2.clear()
 	final_results.clear()
-	parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
+	#parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
+	parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
 	if request.method == 'POST':
 		data = request.POST.copy()
 		choices = data.getlist('choice')
