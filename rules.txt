@@ -1,7 +1,7 @@
 Venice, Paris, London, Lefkada, Santorini, Atena, Meteora, Hawaii, Cancun, Vienna, Instanbul, Rome, New York, Bali, Rio de Janeiro, Maldives, Cape Town, Sydney, La Thuile, Chamonix, King's Route, Plitvice Lakes, Tenerife, Dubai, Bari
 IF italian food AND go to carnivals AND have a romantic time AND Europe THEN Venice
 IF french food AND have a romantic time AND capital AND Europe AND shop at designer boutiques THEN Paris
-IF Europe AND capitala AND visit historical places AND sightseeing THEN London
+IF Europe AND capital AND visit historical places AND sightseeing THEN London
 IF sea AND sunbathe THEN seaside
 IF seaside AND greek food AND Europe THEN Greece
 IF Greece AND diving AND island THEN Lefkada
@@ -22,7 +22,7 @@ IF Indonesia AND quiet THEN Bali
 IF South America AND go to carnivals THEN Rio de Janeiro
 IF Asia AND island AND exotic AND high-end AND seaside AND relaxing AND quiet THEN Maldives
 IF Africa AND relaxing AND seaside THEN Cape Town
-IF Australia AND capitala AND sightseeing AND bustling THEN Sydney
+IF Australia AND capital AND sightseeing AND bustling THEN Sydney
 IF mountain AND ski AND sports AND Europe AND italian food THEN La Thuile
 IF mountain AND ski AND Europe AND sports AND french food THEN Chamonix
 IF mountain AND sports AND hiking AND Europe AND spanish food THEN King's Route

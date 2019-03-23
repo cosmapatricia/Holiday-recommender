@@ -22,11 +22,12 @@ def parse(path):
 			continue
 		elif lines[i].startswith('IF'):
 			sides = lines[i].replace('IF ','').split(' THEN ')
-			current_premise = sides[0].split(' AND ')
-			premises.extend(current_premise)
-# 			print(premises)
+			current_premises = sides[0].split(' AND ')
+			for current_premise in current_premises:
+				if current_premise not in premises:
+					premises.append(current_premise)
 			sides[1] = sides[1].rstrip()
-			rules[sides[1]] = current_premise
+			rules[sides[1]] = current_premises
 			if sides[1] not in final_conclusions:
 				partial_conclusions.append(sides[1])
 

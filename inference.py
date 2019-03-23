@@ -3,7 +3,8 @@ from parser import *
 user_premises = ['sea', 'sunbathe', 'greek food', 'Europe', 'diving', 'island']
 user_partial_conclusions = []
 
-parse('C:\\Users\\Melissa\\Desktop\\SE\\rules.txt')
+#parse('C:\\Users\\Melissa\\Desktop\\SE\\rules.txt')
+parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt') 
 
 print('\nInference data: ')
 print('\nRules: ')
@@ -35,8 +36,17 @@ def inference(conclusion):
 							inference(c)
 	return 0
 
+results = []
 for conclusion in final_conclusions:
-	print(inference(conclusion))
+	results.append(inference(conclusion))
+
+no_result = True
+for result in results:
+	if result != 0:
+		print(result)
+		no_result = False
+if no_result:
+	print('No matches found')
 	
 user_partial_conclusions.clear()
 rules.clear()
