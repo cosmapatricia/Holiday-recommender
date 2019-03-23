@@ -23,7 +23,7 @@
 	<br>
 </div>
 
-<form action="{% url 'expertsystem:detail' next_question.id  %}" method="post">
+<form action="{% url 'expertsystem:detail' next_question  %}" method="post">
 {% csrf_token %}
 {% if question %}
 <ul>

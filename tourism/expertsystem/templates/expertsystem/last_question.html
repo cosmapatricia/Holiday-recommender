@@ -23,7 +23,7 @@
 	<br>
 </div>
 
-<form action="{% url 'expertsystem:detail' next_question.id  %}" method="post">
+<form action="{% url 'expertsystem:results' %}" method="post">
 {% csrf_token %}
 {% if question %}
 <ul>
@@ -44,5 +44,5 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
-<ul><input type="submit" value="Next"></ul>
+<ul><input type="submit" value="Submit"></ul>
 </form>
