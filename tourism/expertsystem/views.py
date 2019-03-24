@@ -101,14 +101,17 @@ def index(request):
 def detail(request, question_id):
 	if request.method == 'POST':
 		data = request.POST.copy()
+		question = get_object_or_404(Question, pk=question_id)
 		choices = data.getlist('choice')
 		for choice in choices:
 			user_premises.append(choice)
-	question = get_object_or_404(Question, pk=question_id)
-	if question_id == Question.objects.count():
-		return render(request, 'expertsystem/last_question.html', {'question': question})
-	else:
-		return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+1})
+			if choice == 'mountain':
+				print(choice)
+				return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+4})
+			elif question_id == Question.objects.count():
+					return render(request, 'expertsystem/last_question.html', {'question': question})
+			else:
+					return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+1})
 
 def results(request):
 	if request.method == 'POST':
