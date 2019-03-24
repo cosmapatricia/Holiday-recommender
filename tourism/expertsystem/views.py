@@ -88,8 +88,8 @@ def index(request):
 	user_results.clear()
 	user_results2.clear()
 	final_results.clear()
-	#parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
-	parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
+	parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
+	#parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
 	if request.method == 'POST':
 		data = request.POST.copy()
 		choices = data.getlist('choice')
@@ -99,19 +99,20 @@ def index(request):
 	return render(request, 'expertsystem/index.html', context)
 
 def detail(request, question_id):
+	question = get_object_or_404(Question, pk=question_id)
 	if request.method == 'POST':
 		data = request.POST.copy()
-		question = get_object_or_404(Question, pk=question_id)
 		choices = data.getlist('choice')
 		for choice in choices:
 			user_premises.append(choice)
 			if choice == 'mountain':
 				print(choice)
-				return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+4})
-			elif question_id == Question.objects.count():
-					return render(request, 'expertsystem/last_question.html', {'question': question})
-			else:
-					return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+1})
+				question = get_object_or_404(Question, pk=(question_id+1))
+				return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+2})
+	if question_id == Question.objects.count():
+		return render(request, 'expertsystem/last_question.html', {'question': question})
+	else:
+		return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+1})
 
 def results(request):
 	if request.method == 'POST':
