@@ -14,3 +14,10 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     def __str__(self):
         return self.choice_text
+		
+
+class Result(models.Model):
+	result_name = models.CharField(max_length=100)
+	result_text = models.CharField(max_length=500)
+	def __str__(self):
+		return self.result_name

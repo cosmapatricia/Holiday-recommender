@@ -29,8 +29,9 @@
 
 {% if final_results %}
     <span class="extratab">
-    {% for result in final_results %}
-        <li>{{ result }}</li>
+    {% for c,p in result_list.items %}
+		<li>{{ c }}</li>
+		<p>{{ p }}</p>
 		<br>
     {% endfor %}
     <form action="{% url 'expertsystem:index' %}" method="post">

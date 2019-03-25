@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.http import Http404
-from .models import Question
+from .models import Question, Result
 # Create your views here.
 
 question_list = Question.objects.all()
+full_result_list = Result.objects.all()
+result_list = {}
+
 i=0
 
 premises = []
@@ -75,21 +78,15 @@ def get_recommendations():
 		final_results.append('No matches found')
 	return final_results
 	
-# user_partial_conclusions.clear()
-
-# rules.clear()
-# premises.clear()
-# partial_conclusions.clear()
-# final_conclusions.clear()
-
 def index(request):
 	user_premises.clear()
 	user_partial_conclusions.clear()
 	user_results.clear()
 	user_results2.clear()
 	final_results.clear()
-	parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
-	#parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
+	result_list.clear()
+	#parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
+	parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
 	if request.method == 'POST':
 		data = request.POST.copy()
 		choices = data.getlist('choice')
@@ -105,10 +102,14 @@ def detail(request, question_id):
 		choices = data.getlist('choice')
 		for choice in choices:
 			user_premises.append(choice)
-			if choice == 'mountain':
-				print(choice)
-				question = get_object_or_404(Question, pk=(question_id+1))
-				return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+2})
+			# if choice != 'Europe':
+				# question = get_object_or_404(Question, pk=(question_id+3))
+				# return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+4})
+			# if choice == 'mountain':
+				# print(choice)
+				# question = get_object_or_404(Question, pk=(question_id+3))
+				# return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+4})
+	question = get_object_or_404(Question, pk=question_id)
 	if question_id == Question.objects.count():
 		return render(request, 'expertsystem/last_question.html', {'question': question})
 	else:
@@ -120,8 +121,9 @@ def results(request):
 		choices = data.getlist('choice')
 		for choice in choices:
 			user_premises.append(choice)
-	#response = "You're looking at the results."
-	#return HttpResponse(user_premises)
 	get_recommendations()
-	#return HttpResponse(final_results) #daca pun aici apelul la get_recommandations se apeleaza de mai multe ori aiurea no idea why
-	return render(request, 'expertsystem/results.html', {'final_results': final_results})
+	for result in final_results:
+		for res in full_result_list:
+			if result == res.result_name:
+				result_list[result] = res.result_text
+	return render(request, 'expertsystem/results.html', {'final_results': final_results, 'result_list': result_list})
