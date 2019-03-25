@@ -28,7 +28,7 @@
 {% if question %}
 <ul>
     <li>{{ question.question_text }}</li>
-    {% if question.choice_set.count > 2 %}
+    {% if question.choice_set.count > 3 %}
     	{% for choice in question.choice_set.all %}
 		<input type="checkbox" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.choice_text }}">
 		<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>

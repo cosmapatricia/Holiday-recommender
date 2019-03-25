@@ -1,4 +1,4 @@
-Venice, Paris, London, Lefkada, Santorini, Atena, Meteora, Hawaii, Cancun, Vienna, Instanbul, Rome, New York, Bali, Rio de Janeiro, Maldives, Cape Town, Sydney, La Thuile, Chamonix, King's Route, Plitvice Lakes, Tenerife, Dubai, Bari
+Venice, Paris, London, Lefkada, Santorini, Atena, Meteora, Hawaii, Cancun, Vienna, Instanbul, Rome, New York, Bali, Rio de Janeiro, Maldives, Cape Town, Sydney, La Thuile, Chamonix, El Caminito del Rey, Plitvice Lakes, Tenerife, Dubai, Bari, Hallstatt, Zermatt
 IF italian food AND go to carnivals AND have a romantic time AND Europe THEN Venice
 IF french food AND have a romantic time AND city-break AND Europe AND shop at designer boutiques THEN Paris
 IF Europe AND city-break AND visit historical places AND sightseeing THEN London
@@ -9,7 +9,7 @@ IF Greece AND high-end AND island THEN Santorini
 IF Europe AND greek food AND sightseeing AND visit historical places AND city-break THEN Atena
 IF Europe AND visit religious places AND greek food AND quiet THEN Meteora
 IF North America AND seaside AND exotic AND island AND high-end AND relaxing AND quiet THEN Hawaii
-IF seaside AND exotic AND party all night THEN Cancun
+IF North America AND seaside AND exotic AND party all night THEN Cancun
 IF Europe AND city-break AND opera or theater THEN Vienna
 IF shop at bazaars AND turkish food AND party all night THEN Istanbul
 IF city-break AND Europe AND italian food AND visit historical places and sightseeing THEN Rome
@@ -23,12 +23,12 @@ IF South America AND go to carnivals THEN Rio de Janeiro
 IF Asia AND island AND exotic AND high-end AND seaside AND relaxing AND quiet THEN Maldives
 IF Africa AND relaxing AND seaside THEN Cape Town
 IF Australia AND city-break AND sightseeing AND bustling THEN Sydney
-IF mountain AND ski AND sports AND Europe AND italian food THEN La Thuile
-IF mountain AND ski AND Europe AND sports AND french food THEN Chamonix
-IF mountain AND sports AND hiking AND Europe AND spanish food THEN King's Route
+IF mountain AND skiing AND sports AND Europe AND italian food THEN La Thuile
+IF mountain AND skiing AND Europe AND sports AND french food THEN Chamonix
+IF mountain AND sports AND hiking AND Europe AND spanish food THEN El Caminito del Rey
 IF mountain AND sports AND hiking AND serbian food AND Europe THEN Plitvice Lakes
 IF Spain AND island THEN Tenerife
-IF Turkey AND high-end AND bustling THEN Dubai
+IF party all night AND high-end AND bustling THEN Dubai
 IF Italy AND sightseeing THEN Bari
 IF mountain AND sightseeing AND Europe THEN Hallstatt
 IF mountain AND relaxing AND Europe THEN Zermatt

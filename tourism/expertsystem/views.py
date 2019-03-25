@@ -77,41 +77,75 @@ def get_recommendations():
 	if no_result:
 		final_results.append('No matches found')
 	return final_results
-	
-def index(request):
+
+q1_answer = []
+q2_answer = []
+q10_answer = []
+
+def append_choices(choices_list, list):
+	for choice in choices_list:
+		list.append(choice)
+
+def clear_session():
 	user_premises.clear()
 	user_partial_conclusions.clear()
 	user_results.clear()
 	user_results2.clear()
 	final_results.clear()
 	result_list.clear()
-	#parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
-	parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
+	q1_answer.clear()
+	q2_answer.clear()
+	q10_answer.clear()
+
+	
+def index(request):
+	clear_session()
+	parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
+	#parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
 	if request.method == 'POST':
 		data = request.POST.copy()
 		choices = data.getlist('choice')
-		for choice in choices:
-			user_premises.append(choice)
+		append_choices(choices, user_premises)
 	context = {'question': question_list[i], 'next_question': question_list[i+1]}
 	return render(request, 'expertsystem/index.html', context)
 
 def detail(request, question_id):
 	question = get_object_or_404(Question, pk=question_id)
+
 	if request.method == 'POST':
 		data = request.POST.copy()
 		choices = data.getlist('choice')
-		for choice in choices:
-			user_premises.append(choice)
-			# if choice != 'Europe':
-				# question = get_object_or_404(Question, pk=(question_id+3))
-				# return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+4})
-			# if choice == 'mountain':
-				# print(choice)
-				# question = get_object_or_404(Question, pk=(question_id+3))
-				# return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+4})
-	question = get_object_or_404(Question, pk=question_id)
+		append_choices(choices, user_premises)
+		if question_id == 2:
+			append_choices(choices, q1_answer)
+			print(q1_answer)
+		elif question_id == 3:
+			append_choices(choices, q2_answer)
+			print(q2_answer)
+			if 'mountain' in q2_answer:
+				return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+4})
+		elif question_id == 11:
+			append_choices(choices, q10_answer)
+			print(q10_answer)
+			if 'exotic' not in q10_answer:
+				results(request)
+				return render(request, 'expertsystem/results.html', {'final_results': final_results, 'result_list': result_list})
+		elif question_id == 8 and ('Europe' not in q1_answer):
+			question = get_object_or_404(Question, pk=(question_id+1))
+			return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+2})
+		elif question_id == 4 and 'city-break' in q2_answer:
+			return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+2})
+		elif question_id == 6 and 'city-break' in q2_answer:
+			return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+2})
+		elif question_id == 9 and ('city-break' in q2_answer or 'mountain' in q2_answer):
+			results(request)
+			return render(request, 'expertsystem/results.html', {'final_results': final_results, 'result_list': result_list})
+		elif question_id == 5 and 'sea' in q2_answer:
+			return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+3})
+			
 	if question_id == Question.objects.count():
-		return render(request, 'expertsystem/last_question.html', {'question': question})
+		if 'exotic' in q10_answer:
+			return render(request, 'expertsystem/last_question.html', {'question': question})
 	else:
 		return render(request, 'expertsystem/detail.html', {'question': question, 'next_question': question_id+1})
 
@@ -119,8 +153,7 @@ def results(request):
 	if request.method == 'POST':
 		data = request.POST.copy()
 		choices = data.getlist('choice')
-		for choice in choices:
-			user_premises.append(choice)
+		append_choices(choices, user_premises)
 	get_recommendations()
 	for result in final_results:
 		for res in full_result_list:

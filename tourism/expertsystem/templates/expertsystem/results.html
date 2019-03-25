@@ -36,7 +36,7 @@
     {% endfor %}
     <form action="{% url 'expertsystem:index' %}" method="post">
 	{% csrf_token %}
-		<input type="submit" value="Retake quiz">
+		<input type="submit" value="Retake test">
 	</form>
     </span>
 {% endif %}
