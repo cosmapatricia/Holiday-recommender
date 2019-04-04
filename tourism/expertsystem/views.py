@@ -5,22 +5,23 @@ from .models import Question, Result
 # Create your views here.
 
 question_list = Question.objects.all()
-full_result_list = Result.objects.all()
-result_list = {}
+database_conclusions_list = Result.objects.all() #retrieve all objects from table Result which contains all possible conclusions and their descriptions
+result_list = {} # resulted conclusion name - conclusion description mapping
 
 i=0
 
+# parser data
 premises = []
 partial_conclusions = []
 final_conclusions = []
 rules = {}
 
+# user data
 user_premises = []
 user_partial_conclusions = []
-
-user_results = []
-user_results2 = []
-final_results = []
+user_results = [] # inference results (with zeros for unactivated conclusions)
+user_results2 = [] 
+final_results = [] # results without description
 
 def parse(path):
 	try:
@@ -156,7 +157,7 @@ def results(request):
 		append_choices(choices, user_premises)
 	get_recommendations()
 	for result in final_results:
-		for res in full_result_list:
+		for res in database_conclusions_list:
 			if result == res.result_name:
 				result_list[result] = res.result_text
 	return render(request, 'expertsystem/results.html', {'final_results': final_results, 'result_list': result_list})
