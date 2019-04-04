@@ -23,17 +23,25 @@
 	<br>
 </div>
 
-<div align="left">
-	<h2><span class="tab">Your results are:</span></h2>
-</div>
 
-{% if final_results %}
+{% if result_list %}
+	<div align="left">
+	<h2><span class="tab">Your results are:</span></h2>
+	</div>
     <span class="extratab">
     {% for c,p in result_list.items %}
 		<li>{{ c }}</li>
 		<p>{{ p }}</p>
 		<br>
     {% endfor %}
+    <form action="{% url 'expertsystem:index' %}" method="post">
+	{% csrf_token %}
+		<input type="submit" value="Retake test">
+	</form>
+    </span>
+{% else %}
+	<span class="extratab">
+	<p>No results found!</p>
     <form action="{% url 'expertsystem:index' %}" method="post">
 	{% csrf_token %}
 		<input type="submit" value="Retake test">
