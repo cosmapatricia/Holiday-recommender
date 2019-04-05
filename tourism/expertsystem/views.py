@@ -101,8 +101,8 @@ def clear_session():
 	
 def index(request):
 	clear_session()
-	#parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
-	parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
+	parse('D:\\An IV CTI 2018\\SE\\Holiday-recommender\\rules.txt')
+	#parse('D:\\AC\\4th_year\\SE\\Holiday-recommender\\rules.txt')
 	if request.method == 'POST':
 		data = request.POST.copy()
 		choices = data.getlist('choice')
